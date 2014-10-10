@@ -1,0 +1,38 @@
+<% if current_user %>
+	<div id="nav_menu">
+		<div class="row">
+			<div class="large-7 columns">
+				<nav class="top-bar" data-topbar role="navigation">
+				  <ul class="title-area">
+				    <li class="name">
+				      <h1><a href="/">Rolled.IN</a></h1>
+				    </li>
+				  </ul>
+
+				  <section class="top-bar-section">
+				    <ul>
+				      <li class="has-dropdown">
+				        <a href="#">Characters</a>
+				        <ul class="dropdown">
+				          <li><a href="/characters/new">New</a></li>
+				          <li><a href="/characters">View</a></li>
+				        </ul>
+				      </li>
+				    </ul>
+
+				    
+				  </section>
+				</nav>
+			</div>
+			<div id="user_info">
+				<div class="large-2 columns">
+					<strong><%= current_user.email %></strong>
+				</div>
+				<div class="large-2 columns">
+					<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<% end %>
