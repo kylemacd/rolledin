@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
-  respond_to :html, :xml, :json
-  before_action :set_character, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+	before_action :set_character, only: [:show, :edit, :update, :destroy]
+	respond_to :html, :xml, :json
 
   def index
     @characters = Character.all
@@ -13,6 +14,8 @@ class CharactersController < ApplicationController
 
   def new
     @character = Character.new
+    # @classes = Class.all
+    @races = Race.all
     respond_with(@character)
   end
 
@@ -21,6 +24,7 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.new(character_params)
+    @character.user_id = current_user.id
     @character.save
     respond_with(@character)
   end

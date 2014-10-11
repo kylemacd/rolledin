@@ -1,0 +1,1 @@
+#test parsing of xml dump of dnd4.wikia
